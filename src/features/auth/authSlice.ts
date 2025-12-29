@@ -21,6 +21,28 @@ const initialState: AuthState = {
   error: null
 };
 
+export const registerThunk = createAsyncThunk(
+  "auth/register",
+  async (
+    data: {
+      name: string;
+      phone: string;
+      email: string;
+      password: string;
+    },
+    { rejectWithValue }
+  ) => {
+    try {
+      const res = await api.post("/auth/register", data);
+      return res.data;
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+      return rejectWithValue(err.response?.data.message);
+    }
+  }
+);
+
+
 export const loginThunk = createAsyncThunk(
   "auth/login",
   async (data: { email: string; password: string }, { rejectWithValue }) => {

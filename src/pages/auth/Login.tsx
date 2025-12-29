@@ -23,20 +23,17 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        {/* Header */}
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800">Welcome Back 👋</h2>
           <p className="text-sm text-gray-500">Login to manage your services</p>
         </div>
 
-        {/* Error */}
         {error && (
           <div className="mb-4 text-sm text-red-600 bg-red-50 p-2 rounded">
             {error}
           </div>
         )}
 
-        {/* Form */}
         <form onSubmit={submit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">
@@ -67,18 +64,20 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-white py-2 rounded-lg font-medium hover:opacity-90 transition disabled:opacity-50"
+            className="w-full bg-primary bg-blue-600 text-white py-2 rounded-lg font-medium hover:opacity-90 transition disabled:opacity-50"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        {/* Footer */}
         <p className="text-center text-sm text-gray-500 mt-6">
           Don’t have an account?{" "}
-          <span className="text-primary font-medium cursor-pointer">
+          <button
+            className="text-primary font-medium cursor-pointer"
+            onClick={() => navigate("/register")}
+          >
             Register
-          </span>
+          </button>
         </p>
       </div>
     </div>
