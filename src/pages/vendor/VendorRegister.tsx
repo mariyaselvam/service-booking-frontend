@@ -89,7 +89,6 @@ const VendorRegister = () => {
           </button>
         </form>
 
-        {/* 🔽 Bottom Navigation */}
         <div className="mt-6 text-center space-y-2">
           <p className="text-sm text-gray-500">
             Already registered as a vendor?{" "}
