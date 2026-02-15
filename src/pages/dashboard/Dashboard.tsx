@@ -77,7 +77,7 @@ const Dashboard = () => {
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Platform Analytics
-          </h1>
+          </h1>Completion Rate
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" className="hidden sm:flex shadow-sm">

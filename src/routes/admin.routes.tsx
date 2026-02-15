@@ -10,6 +10,7 @@ import FinancePayouts from "@/pages/FinanceAndPayouts/FinancePayouts";
 import ReviewsRatings from "@/pages/ReviewsRatings/ReviewsRatings";
 import NotificationManagement from "@/pages/Notifications/Notifications";
 import SystemSettings from "@/pages/Settings/Settings";
+import VendorDetails from "@/pages/vendor/VendorDetails";
 
 const Dashboard = lazy(() => import("@/pages/dashboard/Dashboard"));
 
@@ -17,14 +18,14 @@ export const adminRoutes = (
   <Route path="/admin" element={<AdminLayout />}>
     <Route path="dashboard" element={<Dashboard />} />
 
-    <Route path="users">
-      <Route index element={<UserList />} />
-      <Route path=":id" element={<UserDetails />} />
-    </Route>
+      <Route path="users">
+        <Route index element={<UserList />} />
+        <Route path=":id" element={<UserDetails />} />
+      </Route>
 
     <Route path="vendors">
       <Route index element={<Vendor />} />
-      <Route path=":id" element={<UserDetails />} />
+      <Route path=":id" element={<VendorDetails />} />
     </Route>
 
     <Route path="services">

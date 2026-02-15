@@ -38,6 +38,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useNavigate } from "react-router-dom";
 
 const users = [
   {
@@ -154,6 +155,7 @@ const users = [
 
 const UserList = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="space-y-6 p-4 bg-background min-h-screen">
@@ -163,7 +165,7 @@ const UserList = () => {
             <div className="relative w-full md:w-96">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search by name, email or phone..."
+                placeholder="Search by name, email or p hone..."
                 className="pl-9"
                 value={searchTerm}
                 onChange={(e: any) => setSearchTerm(e.target.value)}
@@ -284,7 +286,10 @@ const UserList = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-48">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuItem className="cursor-pointer">
+                      <DropdownMenuItem
+                        className="cursor-pointer"
+                        onClick={() => navigate(`/admin/users/${user.id}`)}
+                      >
                         View Profile
                       </DropdownMenuItem>
                       <DropdownMenuItem className="cursor-pointer">
@@ -302,7 +307,6 @@ const UserList = () => {
           </TableBody>
         </Table>
 
-        {/* Pagination Footer */}
         <div className="flex items-center justify-between px-4 py-4 bg-muted/20 border-t">
           <p className="text-xs text-muted-foreground">
             Showing 3 of 1,245 customers

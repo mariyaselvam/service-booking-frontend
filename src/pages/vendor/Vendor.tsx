@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useNavigate } from "react-router-dom";
 
 type VerificationStatus = "Verified" | "Pending" | "Rejected";
 type ServiceCategory = "Plumbing" | "Electrician" | "Cleaning" | "Painting";
@@ -174,6 +175,7 @@ const VendorManagement: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const navigate = useNavigate();
 
   const filteredVendors = useMemo<Vendor[]>(() => {
     return mockVendors.filter((vendor) => {
@@ -255,7 +257,6 @@ const VendorManagement: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 p-6">
       <div className="space-y-6">
-
         <div className="bg-white rounded-lg ring-1 ring-slate-200 p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
@@ -401,7 +402,12 @@ const VendorManagement: React.FC = () => {
                           </button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-56">
-                          <DropdownMenuItem className="cursor-pointer">
+                          <DropdownMenuItem
+                            className="cursor-pointer"
+                            onClick={() =>
+                              navigate(`/admin/vendors/${vendor.id}`)
+                            }
+                          >
                             <FileText className="w-4 h-4 mr-2" />
                             View Documents
                           </DropdownMenuItem>
